@@ -1,19 +1,27 @@
 import React, { useState } from "react";
 
-export const Car = () => {
-  const [encendido, setEncendido] = useState(false);
-  const [countKm, setCountKm] = useState(0);
+export const CarObject = () => {
+  //   const [encendido, setEncendido] = useState(false);
+  //   const [countKm, setCountKm] = useState(0);
+
+  const [carState, setCarState] = useState({
+    encendido: false,
+    countKm: 0,
+  });
 
   const checkStateCar = () => {
-    if (encendido) {
+    if (carState.encendido) {
       return <span style={{ color: "green" }}>"Encendido"</span>;
     }
     return <span style={{ color: "red" }}>"Apagado"</span>;
   };
 
   const increaseKm = (num) => {
-    if (encendido) {
-      setCountKm(countKm + num);
+    if (carState.encendido) {
+      setCarState({
+        ...carState,
+        countKm: carState.countKm + num,
+      });
     } else {
       alert("El coche esta apagado");
     }
@@ -22,10 +30,13 @@ export const Car = () => {
   return (
     <div>
       <h2>Nuestro Coche esta: {checkStateCar()}</h2>
-      <h2>Kilometros Recorridos: {countKm}</h2>
+      <h2>Kilometros Recorridos: {carState.countKm}</h2>
       <button
         onClick={() => {
-          setEncendido(!encendido);
+          setCarState({
+            ...carState,
+            encendido: !carState.encendido,
+          });
         }}
       >
         Encendido/Apagado
@@ -33,7 +44,7 @@ export const Car = () => {
 
       <button
         onClick={() => {
-          increaseKm(5);
+          increaseKm(10);
         }}
       >
         Incrementar km

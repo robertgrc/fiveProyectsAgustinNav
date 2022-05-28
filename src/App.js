@@ -1,10 +1,12 @@
 import "./App.css";
-import { Car } from "./components/Car/Car";
+import { CarUseEffect } from "./components/CarUseEffect/CarUseEffect";
+// import { CarObject } from "./components/CarObject/CarObject";
 
 function App() {
   return (
     <div>
-      <Car />
+      {/* <CarObject /> */}
+      <CarUseEffect />
     </div>
   );
 }

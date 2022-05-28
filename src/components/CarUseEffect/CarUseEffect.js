@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export const Car = () => {
+export const CarUseEffect = () => {
   const [encendido, setEncendido] = useState(false);
   const [countKm, setCountKm] = useState(0);
+
+  useEffect(() => {
+    document.title = `coche ${encendido}`;
+  }, [encendido]);
 
   const checkStateCar = () => {
     if (encendido) {
